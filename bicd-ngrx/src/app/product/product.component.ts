@@ -8,25 +8,21 @@ import { ProductFacadeService } from './product-facade.service';
   selector: 'app-product',
   imports: [AsyncPipe],
   templateUrl: './product.component.html',
-  styleUrl: './product.component.scss',
 })
 export class ProductComponent {
   facadeProducts = inject(ProductFacadeService);
 
   constructor() {
-    this.link();
     this.facadeProducts.dispatchGetProducts();
   }
 
-  isProductsLoading$: Observable<boolean> | undefined;
-  isProductsLoaded$: Observable<boolean> | undefined;
-  products$: Observable<Product[]> | undefined;
-
-  private link(): void {
-    this.isProductsLoaded$ = this.facadeProducts.isProductsLoaded$;
-    this.isProductsLoading$ = this.facadeProducts.isProductsLoading$;
-    this.products$ = this.facadeProducts.products$;
-  }
+  isProductsLoading$: Observable<boolean> | undefined =
+    this.facadeProducts.isProductsLoading$;
+  isProductsLoaded$: Observable<boolean> | undefined =
+    this.facadeProducts.isProductsLoaded$;
+  products$: Observable<Product[]> | undefined = this.facadeProducts.products$;
+  selectedProductId$: Observable<number | undefined> =
+    this.facadeProducts.selectedProductId$;
 
   select(product: Product) {
     this.facadeProducts.dispatchSelectProduct(product.id);

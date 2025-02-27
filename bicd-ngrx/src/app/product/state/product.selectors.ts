@@ -23,8 +23,19 @@ export const selectIsProductsLoaded = createSelector(
   (products: Product[]) => products.length > 0
 );
 
-// todo
-export const selectIsNoSelectedProduct = createSelector(
+export const selectIsSelectedProduct = createSelector(
+  selectProductState,
+  (state: ProductState) => state.selectedProductId !== undefined
+);
+
+export const selectSelectedProduct = createSelector(
+  selectProducts,
   selectSelectedProductId,
-  (productId: number | undefined) => productId === undefined
+  (products: Product[], productId: number | undefined) => {
+    let product: Product | undefined = undefined;
+    if (products.length > 0 && productId !== undefined) {
+      product = products.find((prod) => prod.id === productId);
+    }
+    return product;
+  }
 );

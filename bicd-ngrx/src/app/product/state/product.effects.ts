@@ -4,11 +4,13 @@ import { ProductDataService } from '../product-data.service';
 import * as ProductsActions from './product.actions';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
 import { ProductResponse } from '../product.types';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class productEffects {
   private actions$ = inject(Actions);
   private dataService = inject(ProductDataService);
+  private rouet = inject(Router);
 
   getProducts$ = createEffect(() =>
     this.actions$.pipe(
@@ -28,7 +30,7 @@ export class productEffects {
     () =>
       this.actions$.pipe(
         ofType(ProductsActions.selectProduct),
-        tap(() => console.log('selected'))
+        tap(() => this.rouet.navigateByUrl('/product/edit'))
       ),
     { dispatch: false }
   );

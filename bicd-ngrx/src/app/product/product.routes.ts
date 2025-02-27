@@ -5,6 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { ProductComponent } from './product.component';
 import { productEffects } from './state/product.effects';
 import { productReducer } from './state/product.reducer';
+import { ProductEditComponent } from './product-edit/product-edit.component';
 
 export const routeProduct: Route[] = [
   {
@@ -19,6 +20,10 @@ export const routeProduct: Route[] = [
       {
         path: '',
         component: ProductComponent,
+      },
+      {
+        path: 'edit',
+        component: ProductEditComponent,
       },
     ],
   },

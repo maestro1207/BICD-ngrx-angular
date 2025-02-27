@@ -23,6 +23,12 @@ export class ProductFacadeService {
   products$: Observable<Product[]> = this.store.select(
     ProductSelectors.selectProducts
   );
+  isSelectedProduct$: Observable<boolean> = this.store.select(
+    ProductSelectors.selectIsSelectedProduct
+  );
+  selectedProduct$: Observable<Product | undefined> = this.store.select(
+    ProductSelectors.selectSelectedProduct
+  );
 
   dispatchGetProducts(): void {
     console.log('1');

@@ -1,0 +1,10 @@
+@if(isSelectedPoroduct$ | async){
+    <div>
+         {{ (selectedProduct$ | async)?.id}}
+    </div>
+    <div>
+        {{ (selectedProduct$ | async)?.title}}
+    </div>
+} @else {
+    <p>Product not selected, select one.</p>
+}

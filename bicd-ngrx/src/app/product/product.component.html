@@ -4,7 +4,7 @@
 @if (isProductsLoaded$|async) {
 <table>
   @for (product of products$ | async; track product) {
-  <tr (click)="select(product)">
+  <tr class="row" [class.active]="(selectedProductId$ | async) === product.id" (click)="select(product)">
     <td>{{ product.id }}</td>
     <td>{{ product.title }}</td>
     <td>{{ product.price }}</td>
