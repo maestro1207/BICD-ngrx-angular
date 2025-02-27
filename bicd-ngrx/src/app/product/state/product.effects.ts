@@ -34,4 +34,15 @@ export class productEffects {
       ),
     { dispatch: false }
   );
+
+  // updatePorducts$ = createEffect(()=>
+  //   this.actions$.pipe(ofType(ProductsActions.updateProduct),
+  // ));
+
+  updateProductSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ProductsActions.updateProductSuccess),
+      tap(() => this.rouet.navigateByUrl('/product'))
+    )
+  );
 }

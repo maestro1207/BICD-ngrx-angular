@@ -38,4 +38,12 @@ export class ProductFacadeService {
   dispatchSelectProduct(id: number): void {
     this.store.dispatch(ProductActions.selectProduct({ id }));
   }
+
+  dispatchUpdateProduct(): void {
+    this.store.dispatch(ProductActions.updateProduct());
+  }
+
+  dispatchSetProductForm(productForm: Product) {
+    this.store.dispatch(ProductActions.setProductForm({ productForm }));
+  }
 }

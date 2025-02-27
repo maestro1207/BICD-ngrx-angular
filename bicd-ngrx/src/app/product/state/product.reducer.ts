@@ -6,6 +6,9 @@ import {
   getProductsError,
   getProductsSuccess,
   selectProducts,
+  updateProduct,
+  updateProductError,
+  updateProductSuccess,
 } from './product.reducer-options';
 
 export const productReducer = createReducer(
@@ -13,5 +16,8 @@ export const productReducer = createReducer(
   on(ProductActions.getProducts, getProducts),
   on(ProductActions.getProdutcsSucces, getProductsSuccess),
   on(ProductActions.getProductsError, getProductsError),
-  on(ProductActions.selectProduct, selectProducts)
+  on(ProductActions.selectProduct, selectProducts),
+  on(ProductActions.updateProduct, updateProduct),
+  on(ProductActions.updateProductError, updateProductError),
+  on(ProductActions.updateProductSuccess, updateProductSuccess)
 );

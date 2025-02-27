@@ -35,3 +35,24 @@ export const selectProducts = (state: ProductState, action: { id: number }) => {
     selectedProductId: action.id,
   };
 };
+
+export const updateProduct = (state: ProductState) => {
+  return {
+    ...state,
+    isProductUpdating: true,
+  };
+};
+
+export const updateProductError = (state: ProductState) => {
+  return {
+    ...state,
+    isProductUpdating: false,
+  };
+};
+
+export const updateProductSuccess = (state: ProductState) => {
+  return {
+    ...state,
+    isProductUpdating: false,
+  };
+};

@@ -1,5 +1,9 @@
 import { createAction, props } from '@ngrx/store';
-import { Product, ProductResponse } from '../product.types';
+import {
+  Product,
+  ProductResponse,
+  ProductUpdateRsponse,
+} from '../product.types';
 
 export const getProducts = createAction('Guest [GetProducts]');
 
@@ -13,4 +17,18 @@ export const getProdutcsSucces = createAction(
 export const selectProduct = createAction(
   'Guest [SelectProduct]',
   props<{ id: number }>()
+);
+
+export const updateProduct = createAction('Guest [UpdatePorduct]');
+
+export const updateProductError = createAction('Guest [UpdateProductsError]');
+
+export const updateProductSuccess = createAction(
+  'Guest [UpdateProductsSuccess]',
+  props<{ productResponse: ProductUpdateRsponse }>
+);
+
+export const setProductForm = createAction(
+  'Guest [SetProductForm]',
+  props<{ productForm: Product }>()
 );

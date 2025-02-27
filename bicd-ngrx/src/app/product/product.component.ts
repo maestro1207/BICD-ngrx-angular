@@ -1,5 +1,5 @@
 import { AsyncPipe, NgFor } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from './product.types';
 import { ProductFacadeService } from './product-facade.service';
@@ -9,10 +9,10 @@ import { ProductFacadeService } from './product-facade.service';
   imports: [AsyncPipe],
   templateUrl: './product.component.html',
 })
-export class ProductComponent {
+export class ProductComponent implements OnInit {
   facadeProducts = inject(ProductFacadeService);
 
-  constructor() {
+  ngOnInit(): void {
     this.facadeProducts.dispatchGetProducts();
   }
 

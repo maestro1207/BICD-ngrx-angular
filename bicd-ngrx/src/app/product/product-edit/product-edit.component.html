@@ -1,10 +1,19 @@
 @if(isSelectedPoroduct$ | async){
     <div>
-         {{ (selectedProduct$ | async)?.id}}
+        ID: {{ (selectedProduct$ | async)?.id}}
     </div>
-    <div>
-        {{ (selectedProduct$ | async)?.title}}
-    </div>
+
+    <form [formGroup]="productFormGroup" (ngSubmit)="onSubmit()">
+        <input formControlName="title" id="product-title" type="text">
+        <input formControlName="brand" id="product-brand" type="text">
+        <input formControlName="category" id="product-category" type="text">
+        <input type="number" formControlName="price" id="product-price">
+        <input formControlName="description" id="product-description" type="text">
+        @if (productFormGroup.controls['description'].errors?.['required']) {
+            <div>Description is required ;/.</div>
+          }
+        <input type="submit" value="Save">
+    </form>
 } @else {
     <p>Product not selected, select one.</p>
 }
